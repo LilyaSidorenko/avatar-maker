@@ -1,4 +1,43 @@
 var createAvatar = new fabric.Canvas('canvas');
+
+var text = new fabric.Text('Avatar maker', {
+    left: 40,
+    top: 20,
+    fontSize: 40,
+    fill: '#ED5564'
+});
+text.hasBorders = false;
+text.hasControls = false;
+createAvatar.add(text);
+for (let i = 1; i < 4; i++) {
+    fabric.Image.fromURL('images/face' + i + '.png', function (img) {
+        var img2 = img.scale(0.26).set({left: 150 + (i * 160), top: 100});
+        createAvatar.add(img2);
+        createAvatar.sendToBack(img2)
+        img2.hasBorders = false;
+        img2.hasControls = false;
+    });
+    fabric.Image.fromURL('images/eyes' + i + '.png', function (img) {
+        var img4 = img.scale(0.26).set({left: 150 + (i * 160), top: 300});
+        createAvatar.add(img4);
+        img4.hasBorders = false;
+        img4.hasControls = false;
+
+    });
+    fabric.Image.fromURL('images/hair' + i + '.png', function (img) {
+        var img1 = img.scale(0.26).set({left: 150 + (i * 160), top: 400});
+        createAvatar.add(img1);
+        img1.hasBorders = false;
+        img1.hasControls = false;
+    });
+
+    fabric.Image.fromURL('images/glasses' + i + '.png', function (img) {
+        var img3 = img.scale(0.26).set({left: 150 + (i * 160), top: 350});
+        createAvatar.add(img3);
+        img3.hasBorders = false;
+        img3.hasControls = false;
+    });
+}
 const rect = new fabric.Rect({
     width: 200,
     height: 200,
@@ -6,41 +45,12 @@ const rect = new fabric.Rect({
     top: 100,
     strokeWidth: 5,
     stroke: 'rgb(0,0,0)',
-    fill: 'rgb(255,255,255)'
+    fill: 'transparent'
 });
+rect.hasBorders = false;
+rect.hasControls = false;
 createAvatar.add(rect).sendToBack(rect);
-var text = new fabric.Text('Avatar maker', {
-    left: 40,
-    top: 20,
-    fontSize: 40,
-    fill: '#ED5564'
-});
-createAvatar.add(text);
-for (let i = 1; i < 4; i++) {
-    fabric.Image.fromURL('images/face' + i + '.png', function (img) {
-        var img2 = img.scale(0.26).set({left: 150 + (i * 160), top: 100});
-        createAvatar.add(img2);
-        createAvatar.sendToBack(img2)
 
-    });
-    fabric.Image.fromURL('images/eyes' + i + '.png', function (img) {
-        var img4 = img.scale(0.26).set({left: 150 + (i * 160), top: 300});
-        createAvatar.add(img4);
-
-
-    });
-    fabric.Image.fromURL('images/hair' + i + '.png', function (img) {
-        var img1 = img.scale(0.26).set({left: 150 + (i * 160), top: 400});
-        createAvatar.add(img1);
-
-    });
-
-    fabric.Image.fromURL('images/glasses' + i + '.png', function (img) {
-        var img3 = img.scale(0.26).set({left: 150 + (i * 160), top: 350});
-        createAvatar.add(img3);
-
-    });
-}
 document.getElementById('js-delete').addEventListener('click', function () {
     location.reload();
 });
